@@ -11,4 +11,26 @@ public class Assignment4 {
     // For ex - 4Kg Apple + 1KG Orange + 1KG Jam - Print Total
     // Average Price of the Cart.
     // Average Health Index - LOW
+    public static void main(String[] args) {
+        String[][] products = new String[][] {
+                {"id", "name", "price", "weight", "healthIndex"},
+                {"1", "apple", "80", "5", "high"},
+                {"2", "orange", "100", "3", "medium"},
+                {"3", "jam","70", "4", "low"}
+        };
+        int highestQty;
+        int highestQtyRow = 0;
+        for(int i=2; i<products.length; i++) {
+            int qtyCurrentRow = Integer.parseInt(products[i][3]);
+            int qtyPreviousRow = Integer.parseInt(products[i-1][3]);
+            if(qtyCurrentRow > qtyPreviousRow) {
+                highestQty =   qtyCurrentRow;
+                highestQtyRow = i;
+            }else {
+                highestQty = qtyPreviousRow;
+                highestQtyRow = i-1;
+            }
+        }
+        System.out.println("Health Index of Cart : "+products[highestQtyRow][4]);
+    }
 }
